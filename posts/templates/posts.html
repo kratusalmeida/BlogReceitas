@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Lista de Posts {% endblock %}
+
+{% block main %}
+      <table class=" table table-hover table-bordered table-striped table-dark">
+                    <tr>
+                        <th>Título</th>
+                        <th>Texto</th>
+                        <th>Autor</th>
+                        <th>Data publicação</th>
+                        <th>Ações</th>
+
+
+
+
+                    </tr>
+                    <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            <td><a href="{% url 'postsUpdate' post.id %}">{{ post.titulo }}</a></td>
+                            <td> {{ post.texto }}</td>
+                            <td> {{ post.autor }}</td>
+                            <td> {{ post.data_plublic }}</td>
+
+                            <td>
+                                <a href="{% url 'postsDelete' post.id %}" class="trash-item">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+
+                            </td>
+
+
+
+                        </tr>
+
+
+                     {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+
+
+
+
+                <br>
+                <a href="{% url 'postsNew' %}" class="btn btn-primary">Novo</a>
+
+
+
+
+
+{% endblock %}
